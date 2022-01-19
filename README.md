@@ -2,6 +2,7 @@
 
 player
 - points
+- set_points()
 - get_points()
 
 director
