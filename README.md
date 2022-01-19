@@ -1,12 +1,15 @@
 # cse210-02
 
-deck of cards
-
 player
 - points
-- getPoints()
+- get_points()
 
 director
 - play again
-- get input
-score calculate
+- get_input()
+- event handler
+- deck of cards
+  - cards
+  - get_next_card()
+  - get_current_card()
+- calculate_score()
