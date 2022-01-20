@@ -1,18 +1,16 @@
 # cse210-02
 
-player
-- points
-- set_points()
-- get_points()
+Card
+- value
+- draw()
+
 
 director
+- start game
 - play again
 - get_input()
-- event handler
-- deck of cards
-  - cards
-  - get_next_card()
-  - get_current_card()
+- give outputs
+- checkpoints
 - calculate_score()
 
 ## Overview
