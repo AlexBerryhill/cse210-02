@@ -17,6 +17,7 @@ class Card:
             self (Card): An instance of Card.
         """
         self.value = 0
+        self.sub_value = 0
         self.suit = ''
         self.draw()
 
@@ -28,6 +29,14 @@ class Card:
             self (Card): An instance of Card.
         """
         self.value = random.randint(1, 13)
-        self.suit = random.choice(['club', 'heart', 'diamond', 'spade'])
+        self.suit = random.choice(['club', 'diamond', 'heart', 'spade'])
+        if self.suit == 'club':
+            self.value += 0.1
+        if self.suit == 'diamond':
+            self.value += 0.2
+        if self.suit == 'heart':
+            self.value += 0.3
+        if self.suit == 'spade':
+            self.value += 0.4
 
         

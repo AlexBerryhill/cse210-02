@@ -37,7 +37,7 @@ class Director:
         """
         value = self.card.value
         while True:
-            print(f'\nThe card is {self.card.value}')
+            print(f'\nThe card is {round(self.card.value)} of {self.card.suit}')
             self.input = input('Higher or lower? [h/l]')
             if self.input == 'h' or self.input =='l':
                 break
@@ -72,7 +72,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        print(f'Next Card was {self.card.value}')
+        print(f'Next Card was {round(self.card.value)} of {self.card.suit}')
         print(f"You have {self.total_score} points!")
 
     def check_points(self):
