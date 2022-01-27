@@ -23,10 +23,20 @@ class Director:
         Args: 
             self (Director): an instance of Director
         """
+        print('''
+Welcome to Hilo! In this game you try to guess
+if the next card drawn will be higher or lower
+than the previous card. The card suits are also
+taken into account. The order from lowest to
+highest is Club, Diamond, Heart, Spade.
+You win 100 points if correct, and loose 75
+if incorrect. Good Luck!''')
+
+
         while self.playing: 
-            value = self.get_input()
+            value, sub_value = self.get_input()
             self.card.draw()
-            self.calc_points(value)
+            self.calc_points(value, sub_value)
             self.give_outputs()
             self.check_points()
 
@@ -36,6 +46,7 @@ class Director:
             self (Director): An instance of Director.
         """
         value = self.card.value
+        sub_value = self.card.sub_value
         while True:
             print(f'\nThe card is {round(self.card.value)} of {self.card.suit}')
             self.input = input('Higher or lower? [h/l]')
@@ -44,35 +55,53 @@ class Director:
             else:
                 print('That is not valid, please use h or l')
 
-        return value
+        return value, sub_value
         
 
-    def calc_points(self, value):
+    def calc_points(self, value, sub_value):
         """ Gets user input
         Args:
             self (Director): An instance of Director.
             value (int): The value of the card this current round
         """
+
         next_value = self.card.value
-        if ((next_value > value) and self.input=='h'):
-            print('You won!')
-            self.total_score += 100
-        elif ((next_value < value) and self.input=='l'):
-            print('You Won!')
-            self.total_score += 100
-        elif (next_value == value):
-            print('That was the same card!')
-            pass
+        next_sub_value = self.card.sub_value
+
+        if next_sub_value == sub_value:
+            if next_value > value and self.input == 'h':
+                print('You won!')
+                self.total_score += 100
+            elif next_value < value and self.input == 'l':
+                print('You won!')
+                self.total_score += 100
+            elif next_value == value:
+                print('That was the same card!')
+            else:
+                print('Wrong answer :(')
+                self.total_score -= 75
+
+        elif next_sub_value > sub_value:
+            if next_value > value and self.input == 'h':
+                print('You won!')
+                self.total_score += 100            
+            else:
+                print('Wrong answer :(')
+                self.total_score -= 75
         else:
-            print('Wrong answer :(')
-            self.total_score -= 75       
+            if next_value < value and self.input == 'l':
+                print('You won!')
+                self.total_score += 100            
+            else:
+                print('Wrong answer :(')
+                self.total_score -= 75    
 
     def give_outputs(self):
         """"Tells the player what their next card was and their points
         Args:
             self (Director): An instance of Director.
         """
-        print(f'Next Card was {round(self.card.value)} of {self.card.suit}')
+        print(f'Next Card was {self.card.value} of {self.card.suit}')
         print(f"You have {self.total_score} points!")
 
     def check_points(self):

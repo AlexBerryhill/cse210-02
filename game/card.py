@@ -29,14 +29,14 @@ class Card:
             self (Card): An instance of Card.
         """
         self.value = random.randint(1, 13)
-        self.suit = random.choice(['club', 'diamond', 'heart', 'spade'])
-        if self.suit == 'club':
-            self.value += 0.1
-        if self.suit == 'diamond':
-            self.value += 0.2
-        if self.suit == 'heart':
-            self.value += 0.3
-        if self.suit == 'spade':
-            self.value += 0.4
+        self.suit = random.choice(['Clubs', 'Diamonds', 'Hearts', 'Spades'])
+        if self.suit == 'Clubs':
+            self.sub_value = 1
+        if self.suit == 'Diamonds':
+            self.sub_value = 2
+        if self.suit == 'Hearts':
+            self.sub_value = 3
+        if self.suit == 'Spades':
+            self.sub_value = 4
 
         
