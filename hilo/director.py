@@ -1,4 +1,4 @@
-from game.card import Card
+from hilo.card import Card
 
 class Director:
     """Directs the game and controls play
